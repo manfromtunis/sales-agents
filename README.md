@@ -12,6 +12,7 @@ Parse your Gemini Meet notes, Claap transcripts, or any markdown meeting notes t
 | **Sales Deck** | `/sales-deck <prospect>` | Generate prospect-specific 8-slide deck from real verbatims |
 | **Battle Cards** | `/battle-cards` | Competitive intelligence cards with objection scripts |
 | **Help Center Gaps** | `/help-center-gaps` | Find doc gaps from prospect questions, generate article briefs |
+| **Discord Support Gaps** | `/discord-support-gaps` | Analyze Discord support messages → bugs, features, UX gaps → Notion tickets |
 | **Sales Pipeline** | `/sales-pipeline` | Run all skills → unified weekly report |
 
 ## Install
@@ -27,6 +28,7 @@ npx skills add manfromtunis/sales-agents@weekly-deal-review
 npx skills add manfromtunis/sales-agents@sales-deck
 npx skills add manfromtunis/sales-agents@battle-cards
 npx skills add manfromtunis/sales-agents@help-center-gaps
+npx skills add manfromtunis/sales-agents@discord-support-gaps
 npx skills add manfromtunis/sales-agents@sales-pipeline
 ```
 
@@ -40,6 +42,8 @@ All configuration is optional. Skills work out of the box with sensible defaults
 | `DOCS_PATH` | *(none)* | Path to existing docs/help center for gap cross-reference |
 | `OUTPUT_FORMAT` | `markdown` | Default output: `markdown` or `notion` |
 | `BRAND_SKILL` | *(none)* | Brand guidelines skill name (e.g., `clip2earn-brand`) |
+| `DISCORD_SUPPORT_CHANNEL` | *(none)* | Discord channel ID for support gap analysis |
+| `CLIP2EARN_TICKETS_DB` | *(none)* | Notion database ID for ticket dedup + creation |
 
 ## Quick Start
 
@@ -55,6 +59,7 @@ export MEETING_NOTES_PATH="./meeting-notes/"
 /sales-deck "Acme Corp"
 /battle-cards --competitor "Competitor X"
 /help-center-gaps --docs ./docs/ --issues
+/discord-support-gaps --channel <channel-id> --days 14 --dry-run
 ```
 
 ## Supported Note Formats
@@ -75,6 +80,7 @@ These tools enhance the skills but are **not required** — everything falls bac
 | **WebSearch** | battle-cards | Enrich competitor cards with web research |
 | **GitHub CLI (`gh`)** | help-center-gaps | Create GitHub issues for documentation gaps |
 | **Brand skill** | sales-deck | Apply brand voice and visual guidelines to decks |
+| **Discord MCP** | discord-support-gaps | Read Discord support channels live |
 
 ## Data Privacy
 
